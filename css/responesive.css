@@ -1,0 +1,48 @@
+@media (max-width:1090px){
+    /* Mobile menu */
+    #button{display:block;z-index:100}
+    #button.active span:nth-child(1){transform:rotate(22deg)}
+    #button.active span:nth-child(2){opacity:0}
+    #button.active span:nth-child(3){transform:rotate(-22deg)}
+    #contact{display:none}
+    .a2{display:inline-flex}
+    ul{
+        display:none;position:fixed;top:78px;right:0;width:min(280px,70%);
+        flex-direction:column;gap:0;padding:12px 0;
+        background:var(--surface);border:1px solid var(--line);border-right:0;
+    }
+    ul.is-active{display:flex;animation:menu .35s ease-out}
+    li{text-align:center;padding:14px 0}
+
+    /* Hero */
+    .section1{padding-top:110px}
+    .content1{flex-direction:column-reverse;text-align:center}
+    .intro{margin:0 auto;text-align:left}
+    .socialmedia{justify-content:center}
+    .image{margin-bottom:30px}
+    .image::before{left:50%;margin-left:calc(min(190px,40vw) * -1 + 18px);transform:translateY(18px)}
+
+    /* About & skills */
+    .aboutme,.myskils{flex-direction:column;gap:0}
+    .aboutmeimage,.myskilsimage{display:none}
+    .aboutmetext,.myskilstext{width:100%}
+    .aboutmetext h1,.aboutmetext h3,.myskilstext h1{text-align:center}
+    .skilscontent{display:flex;justify-content:center}
+
+    /* Services & projects */
+    .services-container,.projects-container{grid-template-columns:repeat(2,1fr)}
+}
+
+@media (max-width:600px){
+    body{font-size:16px}
+    .services-container,.projects-container{grid-template-columns:1fr}
+    .skilscontent table,.skilscontent tr,.skilscontent td{display:block;text-align:center}
+    .skilscontent tr{margin-bottom:18px}
+    .skilscontent td{display:inline-block;padding:0 6px}
+    .skilscontent td[id="h2"]{display:block;padding:0 0 8px}
+    .skilscontent img{width:56px;height:56px}
+    .socialmedia{flex-wrap:wrap;gap:10px}
+    .socialmedia a{width:42px;height:42px}
+}
+
+@keyframes menu{from{transform:translateX(100%);opacity:0}to{transform:none;opacity:1}}

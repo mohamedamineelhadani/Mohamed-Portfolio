@@ -1,0 +1,179 @@
+/* Classic luxury, orange. Dark by default; the "M" button switches to the ivory theme. */
+:root{
+    --bg:#0f0c09;
+    --surface:#191410;
+    --ink:#f4ece0;
+    --muted:#b3a593;
+    --accent:#e87a1e;
+    --accent-soft:#f3a45a;
+    --line:rgba(232,122,30,.35);
+    --on-accent:#140e08;
+    --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+    --sans:"Jost","Helvetica Neue",Arial,sans-serif;
+}
+:root.active{
+    --bg:#f7f0e4;
+    --surface:#fffaf1;
+    --ink:#1f1710;
+    --muted:#6d5e4d;
+    --accent:#c85f0a;
+    --accent-soft:#a84e06;
+    --line:rgba(200,95,10,.4);
+    --on-accent:#fffaf1;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+    background:var(--bg);color:var(--ink);
+    font-family:var(--sans);font-size:17px;line-height:1.7;
+    overflow-x:hidden;transition:background .4s,color .4s;
+}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.15;letter-spacing:.01em}
+a{color:inherit;text-decoration:none}
+span{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.icon{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.12em}
+.icon.fill{fill:currentColor;stroke:none}
+
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+/* ---------- Navigation ---------- */
+nav{
+    position:fixed;inset:0 0 auto 0;z-index:2000;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:18px 5%;
+    background:color-mix(in srgb,var(--bg) 82%,transparent);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+}
+#logo h1{font-size:1.7rem;font-weight:600}
+.list{display:flex;align-items:center;gap:28px}
+ul{display:flex;gap:28px;list-style:none}
+li a.nav-link{display:inline-flex;align-items:center;gap:8px;font-size:.95rem;letter-spacing:.04em;color:var(--muted);padding:4px 0;border-bottom:1px solid transparent}
+li a.nav-link:hover{color:var(--accent);border-color:var(--accent)}
+.a2{display:none}
+#contact{
+    display:inline-block;padding:9px 26px;border:1px solid var(--accent);
+    color:var(--accent);font:500 .95rem var(--sans);letter-spacing:.06em;
+    transition:background .3s,color .3s;
+}
+#contact:hover{background:var(--accent);color:var(--on-accent)}
+#button{display:none;background:none;border:0;cursor:pointer;padding:6px}
+#button span{display:block;width:30px;height:2px;background:var(--ink);margin:6px 0;transform-origin:0 0;transition:.3s}
+
+/* ---------- Hero ---------- */
+.section1{min-height:100vh;display:flex;align-items:center;padding:120px 5% 60px}
+.content1{display:flex;align-items:center;gap:6%;width:100%;max-width:1200px;margin:0 auto}
+.text{flex:1.2;animation:rise .9s ease-out both}
+.text h1{font-size:clamp(2.6rem,5vw,4.4rem)}
+.text h3{font-size:clamp(1.4rem,2.4vw,2rem);font-weight:500;font-style:italic;color:var(--muted);margin:14px 0 28px}
+.intro{border-left:2px solid var(--accent);padding:4px 0 4px 24px;max-width:560px}
+.intro h2{font-size:1.5rem;margin-bottom:10px}
+.intro p{color:var(--muted)}
+.socialmedia{display:flex;gap:14px;margin:30px 0}
+.socialmedia a{
+    width:46px;height:46px;display:grid;place-items:center;border:1px solid var(--line);
+    border-radius:50%;color:var(--ink);font-size:1.15rem;transition:.3s;
+}
+.socialmedia a:hover{background:var(--accent);border-color:var(--accent);color:var(--on-accent);transform:translateY(-3px)}
+.cv h5{
+    display:inline-flex;align-items:center;gap:10px;padding:14px 34px;
+    background:var(--accent);color:var(--on-accent);font:500 1rem var(--sans);letter-spacing:.06em;
+    border:1px solid var(--accent);transition:.3s;
+}
+.cv a:hover h5{background:transparent;color:var(--accent)}
+
+/* The one memorable element: an arched portrait with an offset gold frame */
+.image{flex:1;position:relative;display:flex;justify-content:center;animation:rise 1s .15s ease-out both}
+.image1{
+    width:min(380px,80vw);aspect-ratio:3/4;object-fit:cover;
+    border-radius:999px 999px 6px 6px;position:relative;z-index:1;
+    background:var(--surface);
+}
+.image::before{
+    content:"";position:absolute;width:min(380px,80vw);aspect-ratio:3/4;
+    border:1px solid var(--accent);border-radius:999px 999px 6px 6px;
+    transform:translate(18px,18px);
+}
+#toggle-theme{
+    position:absolute;z-index:3;right:0;bottom:-10px;width:48px;height:48px;border-radius:50%;
+    font:600 1.4rem var(--serif);color:var(--accent);background:var(--surface);
+    border:1px solid var(--accent);cursor:pointer;transition:.3s;
+}
+#toggle-theme:hover{background:var(--accent);color:var(--on-accent)}
+
+/* ---------- Shared section heads ---------- */
+.section2,.section3,.section5{padding:90px 5%}
+.section3 h1,.section5 h1,.aboutmetext h1,.myskilstext h1,.contact-container h1{
+    font-size:clamp(2.2rem,4vw,3.2rem);margin-bottom:28px;
+}
+.section3 h1,.section5 h1{text-align:center}
+.section3 h1::after,.section5 h1::after,.contact-container h1::after{
+    content:"";display:block;width:70px;height:1px;background:var(--accent);margin:16px auto 0;
+}
+
+/* ---------- About & skills ---------- */
+.aboutme,.myskils{display:flex;align-items:center;justify-content:center;gap:6%;max-width:1200px;margin:0 auto}
+.myskils{margin-top:100px}
+.aboutmeimage,.myskilsimage{width:34%}
+.aboutmeimage img,.myskilsimage img{width:100%;border:1px solid var(--line);padding:12px;background:var(--surface);border-radius:4px}
+.aboutmetext,.myskilstext{width:46%}
+.aboutmetext h3{font-size:1.7rem;font-weight:500;font-style:italic;margin-bottom:18px}
+.intro2{border-left:2px solid var(--accent);padding-left:24px}
+.intro2 p{color:var(--muted);text-align:left}
+.skilscontent table{border-collapse:separate;border-spacing:0 14px}
+.skilscontent td{padding-right:14px}
+.skilscontent td h2{font-size:1.7rem;white-space:nowrap;padding-right:20px}
+.skilscontent img{
+    width:64px;height:64px;padding:11px;background:#fff;border-radius:50%;
+    border:1px solid var(--line);transition:.3s;
+}
+.skilscontent img:hover{border-color:var(--accent);transform:translateY(-3px)}
+
+/* ---------- Services ---------- */
+.services-container,.projects-container{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:26px;max-width:1200px;margin:0 auto;padding:20px 0;
+}
+.service-box{background:var(--surface);border:1px solid var(--line);padding:36px 26px;text-align:center;transition:.3s}
+.service-box:hover{border-color:var(--accent);transform:translateY(-6px)}
+.service-icon{font-size:2.4rem;color:var(--accent);margin-bottom:16px}
+.service-title{font-size:1.5rem;margin-bottom:10px}
+.service-description{font-size:.97rem;color:var(--muted)}
+
+/* ---------- Projects ---------- */
+.project-box{background:var(--surface);border:1px solid var(--line);padding:14px 14px 22px;text-align:center;cursor:pointer;transition:.3s}
+.project-box:hover{border-color:var(--accent);transform:translateY(-6px)}
+.project-box .image-box{overflow:hidden;aspect-ratio:4/3;margin-bottom:16px}
+.image-box img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.project-box:hover .image-box img{transform:scale(1.06)}
+.project-title{font-size:1.35rem;margin-bottom:4px}
+.project-description{font-size:.92rem;color:var(--muted)}
+
+/* ---------- Contact ---------- */
+.section4{display:flex;justify-content:center;padding:90px 5%}
+.contact-container{width:100%;max-width:640px;text-align:center}
+.contact-form{display:flex;flex-direction:column;gap:16px;text-align:left}
+.contact-form input,.contact-form textarea{
+    background:var(--surface);color:var(--ink);border:1px solid var(--line);
+    padding:14px 16px;font:inherit;font-size:1rem;border-radius:2px;transition:.3s;
+}
+.contact-form input::placeholder,.contact-form textarea::placeholder{color:var(--muted)}
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px var(--line)}
+.contact-form textarea{resize:vertical;min-height:150px}
+.contact-form button{
+    background:var(--accent);color:var(--on-accent);border:1px solid var(--accent);
+    padding:15px;font:500 1rem var(--sans);letter-spacing:.06em;cursor:pointer;transition:.3s;
+}
+.contact-form button:hover{background:transparent;color:var(--accent)}
+
+/* ---------- Loader ---------- */
+.loading-screen{position:fixed;inset:0;background:var(--bg);display:grid;place-items:center;z-index:10000}
+.spinner{width:64px;height:64px;border:1px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-screen.hidden{opacity:0;visibility:hidden;transition:opacity .5s,visibility .5s}
+
+@media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    html{scroll-behavior:auto}
+}
