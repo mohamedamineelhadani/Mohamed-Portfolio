@@ -30,7 +30,7 @@ if (!$exists && $_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body class="center">
     <main class="card">
-        <h1>Admin <span>Panel</span></h1>
+        <h1>Admin <span>Setup</span></h1>
         <?php if ($exists): ?>
             <p>Hello Admin, please login.</p>
             <a class="btn" href="login.php">Go to login</a>
